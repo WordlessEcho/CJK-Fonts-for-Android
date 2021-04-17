@@ -96,7 +96,7 @@ def remove_codepoints_from_ttc(ttc_name):
             print(f'Subsetting {otf_name}...')
             remove_from_cmap(otf_name, otf_name, exclude=EXCLUDED_CODEPOINTS)
         # TODO: Allow user choose output location
-        ttc_utils.ttcfile_build(f'{SCRIPT_PATH}/output/{otf_name}', otf_names, f'{PIP_USER}/otf2otc')
+        ttc_utils.ttcfile_build(f'{SCRIPT_PATH}/output/{ttc_name}', otf_names, f'{PIP_USER}/otf2otc')
         for f in otf_names:
             os.remove(f)
 
