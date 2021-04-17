@@ -71,7 +71,7 @@ ANDROID_EMOJI = {
     0x2764, # ❤ HEAVY BLACK HEART
 }
 # We don't want support for ASCII control chars.
-CONTROL_CHARS = tool_utils.parse_int_ranges('0000-001F');
+CONTROL_CHARS = tool_utils.parse_int_ranges('0000-001F')
 
 EXCLUDED_CODEPOINTS = sorted(EMOJI_IN_CJK | ANDROID_EMOJI | CONTROL_CHARS)
 
@@ -92,7 +92,7 @@ TEMP_DIR = 'temp'
 def remove_codepoints_from_ttc(ttc_name):
     otf_names = ttc_utils.ttcfile_extract(ttc_name, TEMP_DIR, f'{PIP_USER}/otc2otf')
     with tool_utils.temp_chdir(TEMP_DIR):
-        for index, otf_name in enumerate(otf_names):
+        for otf_name in otf_names:
             print(f'Subsetting {otf_name}...')
             remove_from_cmap(otf_name, otf_name, exclude=EXCLUDED_CODEPOINTS)
         # TODO: Allow user choose output location
