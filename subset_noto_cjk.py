@@ -85,7 +85,7 @@ else:
 
 def remove_from_cmap(infile, outfile, exclude=frozenset()):
     """Removes a set of characters from a font file's cmap table."""
-    font = ttLib.TTFont(SCRIPT_PATH + infile)
+    font = ttLib.TTFont(f'{SCRIPT_PATH}/{infile}')
     font_data.delete_from_cmap(font, exclude)
     font.save(outfile)
 TEMP_DIR = 'temp'
@@ -96,7 +96,7 @@ def remove_codepoints_from_ttc(ttc_name):
             print(f'Subsetting {otf_name}...')
             remove_from_cmap(otf_name, otf_name, exclude=EXCLUDED_CODEPOINTS)
         # TODO: Allow user choose output location
-        ttc_utils.ttcfile_build(f'{SCRIPT_PATH}output/{otf_name}', otf_names, f'{PIP_USER}/otf2otc')
+        ttc_utils.ttcfile_build(f'{SCRIPT_PATH}/output/{otf_name}', otf_names, f'{PIP_USER}/otf2otc')
         for f in otf_names:
             os.remove(f)
 
