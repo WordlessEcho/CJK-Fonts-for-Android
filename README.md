@@ -14,3 +14,7 @@ python subset_noto_cjk.py
 ```
 
 You will got a edited font in `output`.
+
+## Known issue
+- Output file name might be wrong.
+- Index order may changed.
