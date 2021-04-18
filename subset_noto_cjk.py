@@ -15,10 +15,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Create a curated subset of Noto CJK for Android."""
 import os
 import pathlib
 import sysconfig
+
+from argparse import ArgumentParser
+
 from fontTools import ttLib
 from nototools import font_data
 from nototools import tool_utils
@@ -100,5 +102,16 @@ def remove_codepoints_from_ttc(ttc_name):
         for f in otf_names:
             os.remove(f)
 
-# TODO: Allow user choose which font to edit
-remove_codepoints_from_ttc('NotoSansCJK-Regular.ttc')
+def main(args=None):
+    """Create a curated subset of Noto CJK for Android."""
+    parser = ArgumentParser(description='Create a curated subset of Noto CJK for Android.')
+    parser.add_argument('ttc_names', metavar='ttc_font', type=str, nargs='+',
+                        help='Fonts to be edited')
+
+    args = parser.parse_args()
+    for ttc_name in args.ttc_names:
+        remove_codepoints_from_ttc(ttc_name)
+
+if __name__ == "__main__":
+    # execute only if run as a script
+    main()

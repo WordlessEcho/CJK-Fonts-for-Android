@@ -10,7 +10,7 @@ Put `NotoSansCJK-Regular.ttc` (edit the bottom line of subset_noto_cjk.py for an
 
 Then (or python3 on Ubuntu/Debian):
 ```bash
-python subset_noto_cjk.py
+python subset_noto_cjk.py ttc_font_1 [ttc_font_2 ...]
 ```
 
 You will got a edited font in `output`.
